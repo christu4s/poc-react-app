@@ -1,0 +1,79 @@
+import React from "react";
+import CommonButton from "../../common/CommonButton/CommonButton";
+import NotificationBell from "../../common/Notification/NotificationBell";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import HelpIcon from "@mui/icons-material/Help";
+import Box from "@mui/material/Box";
+import { IconButton, Tooltip } from "@mui/material";
+
+function Header({ title }) {
+  const headerStyles = {
+    wrapper: {
+      backgroundColor: "#009be5",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      padding: "20px",
+    },
+
+    topRow: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "end",
+      alignItems: "center",
+      marginBottom: "20px",
+      "*": {
+        marginRight: "5px",
+      },
+    },
+    middleRow: {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginBottom: "20px",
+      marginLeft: "320px",
+    },
+
+    link: {
+      fontWeight: 500,
+      color: "rgba(255,255,255,0.7)",
+      "&:hover": {
+        color: "#fff",
+        cursor: "pointer",
+      },
+
+      webButton: {
+        marginRight: "5px",
+      },
+    },
+  };
+  return (
+    <Box sx={headerStyles.wrapper}>
+      <Box sx={headerStyles.topRow}>
+        <Typography sx={headerStyles.link}>Go to docs</Typography>
+        <NotificationBell badgeContent="6" color="error" />
+        <Avatar src="https://mui.com/static/images/avatar/1.jpg" />
+      </Box>
+      {/* second row  */}
+      <Box sx={headerStyles.middleRow}>
+        <Typography variant="h1" color={"white"}>
+          {title}
+        </Typography>
+        <Box>
+          <CommonButton sx={headerStyles.webButton} variant="outlined">
+            Web setup
+          </CommonButton>
+          <Tooltip title="helpline">
+          <IconButton color="white" sx={headerStyles.helpIcon}>
+            <HelpIcon />
+          </IconButton>
+          </Tooltip>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+export default Header;
